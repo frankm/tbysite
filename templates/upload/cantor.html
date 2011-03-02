@@ -1,0 +1,19 @@
+{% if cantor_list %}
+	<table border="1">
+	  <tr>
+		<th>Document File</th>
+		<th>Audio File</th>
+		<th>Notes</th>
+	  </tr>   
+  {% for set in cantor_list %}
+		<tr>
+			<td>{{set.document_name}}</td>
+			<td>{{set.audio_name}}</td>
+			<td>{{set.notes}}</td>
+		</tr>
+    {% endfor %}
+    
+	</table>
+{% else %}
+    <p>No list is available.</p>
+{% endif %}
