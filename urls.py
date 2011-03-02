@@ -13,6 +13,8 @@ urlpatterns = patterns('',
     (r'^jsi18n/(?P<packages>\S+?)/$', 'django.views.i18n.javascript_catalog'),
     (r'^join-form/$', views.join),
     (r'^calendars_test/', include('schedule.urls')),
+    (r'^upload/cantor/$', 'upload.views.cantor_documents'),
+
     #url(r'^calendar_app$', direct_to_template,{"template":"homepage_schedule.html"}),
 
     #(r'^search/$', views.search),

@@ -108,7 +108,8 @@ INSTALLED_APPS = (
 
      'django.contrib.admin',
     'joinform',
-		'schedule',
+    'schedule',
+    'upload',
     
 )
 
