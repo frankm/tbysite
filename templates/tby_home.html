@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n cms_tags %}
+
+{% block content %}
+  <div id="col1" class="grid_3">	    
+		{% include "sidebar_submenu.html" %}	
+		{% block col_sidebar %}
+			<div class="inner_div">
+			{# with "220" as width #}
+	    		{% placeholder col_sidebar %}
+			{# endwith #}
+			</div>
+		{% endblock %}
+    <div id="col1_end"></div>
+  </div>
+
+  <div id="featured" class="grid_12">
+		<div class="inner_div">
+    {% block top_featured %}
+      {% placeholder top_featured %}
+    {% endblock %}
+		</div>
+  </div>
+
+  <div id="col2" class="grid_9">
+	  {% block col_left %}
+			<div class="inner_div">
+	    {# with "340" as width #}
+		    {% placeholder col_left %}
+	    {# endwith #}
+			</div>
+    {% endblock %}
+  </div>
+	
+  <div id="col3" class="grid_3">
+	{% block col_right %}
+		<div class="inner_div">
+		{# with "220" as width #}
+			{% placeholder col_right %}
+		{# endwith #}
+		</div>
+	{% endblock %}
+  </div>
+
+{% endblock %}
+

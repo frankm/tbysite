@@ -12,19 +12,28 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'db.sqlite',                      # Or path to database file if using sqlite3.
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+#        'NAME': 'db.sqlite',                      # Or path to database file if using sqlite3.
+#    }
+#
+DATABASE_ENGINE = 'sqlite3'
+DATABASE_NAME = 'cms.sqlite'
 
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Los_Angeles'
 LANGUAGE_CODE = 'en-us'
-SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'jointemplebatyahm@gmail.com'
+EMAIL_HOST_PASSWORD = 'hashrocket'
+EMAIL_PORT = 587
+SITE_ID = 1
+
+CMS_MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media/cms/')
 MEDIA_ROOT = os.path.join(PROJECT_PATH, "media")
 MEDIA_URL = "/media/"
 ADMIN_MEDIA_PREFIX="/media/admin/"
@@ -60,7 +69,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 )
 
-ROOT_URLCONF = 'tby.urls'
+ROOT_URLCONF = 'tbysite.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, "templates")
@@ -98,10 +107,18 @@ INSTALLED_APPS = (
     'publisher',
 
      'django.contrib.admin',
+    'joinform',
+		'schedule',
     
 )
 
 LANGUAGES = [
     ('en', 'English'),
 ]
+
+CMS_TEMPLATES = (
+    ('tby_home.html', gettext('tby base layout')),
+)
+
+
 
