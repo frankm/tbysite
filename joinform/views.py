@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
 from joinform.forms import JoinForm
+from django.template import RequestContext
+from django.core.context_processors import csrf
 
 def join(request):
     if request.method == 'POST':
@@ -13,10 +15,7 @@ def join(request):
             message = 'Title: ' + cd['title']+'\n'
             message = message + '\n First Name: ' + cd['firstname'] +'\n'
             message = message + '\n Last Name: ' + cd['lastname'] +'\n'
-            message = message + '\n Birthday Date: ' +'\n'
-            message = message + ' Month: ' + cd['bdateMonth']
-            message = message + ' Day: ' + cd['bdateDay']
-            message = message + ' Year: ' + cd['bdateYear']+'\n'
+            message = message + '\n Birthday Date (MM/DD/YYYY): '+ cd['birthdate'] +'\n'
             message = message + '\n Marital Status: ' + cd['marital']+'\n'
             message = message + '\n Occupation: ' + cd['occupation']+'\n'
             message = message + '\n Firm/Business Name & Address: ' + cd['firm']+'\n'
@@ -55,7 +54,8 @@ def join(request):
                 cd.get('email', 'noreply@example.com'),
                 ['jointemplebatyahm@gmail.com'],
             )
-            return HttpResponse(cd['title']+'\n'+ cd['activity'])
+            return render_to_response('join_form.html', {'form': form},context_instance=RequestContext(request))
     else:
         form = JoinForm()
-    return render_to_response('join_form.html', {'form': form})
+    
+    return render_to_response('join_form.html', {'form': form},context_instance=RequestContext(request))

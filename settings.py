@@ -65,6 +65,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.media',
     'cms.context_processors.media',
+    
    # 'django.core.context_processors.csrf',
 
 )
@@ -110,6 +111,7 @@ INSTALLED_APPS = (
     'joinform',
     'schedule',
     'upload',
+    'photologue',
     
 )
 
@@ -119,7 +121,8 @@ LANGUAGES = [
 
 CMS_TEMPLATES = (
     ('tby_home.html', gettext('tby base layout')),
+    ('gallery_archive.html', gettext('gallery form')),
 )
 
-
+CMS_REDIRECTS = True
 

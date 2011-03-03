@@ -1,12 +1,14 @@
-
+{% extends "tby_home.html" %}
+{% load i18n cms_tags %}
+{% load cms_tags %}
+{% block col_left %}
 <html>
-<head>
-    <title>Join TBY</title>
-</head>
+
 <body>
+
 <style type="text/css">
 @font-face { font-family: Nilland-Extra-Bold; src: url(/media/fonts/Nilland-ExtraBold.ttf); }
-@font-face { font-family: Sefer-AH; src: url(/media/fonts/Sefer-AH.TTF); } 
+@font-face { font-family: Sefer-AH; src: url(/media/fonts/Sefer-AH.TTF); }
 
 body	{
 	background-color:#b0c4de;
@@ -32,281 +34,276 @@ Membership Application</h1>
         </p>
     {% endif %}
 
-    <form action="" method="post" class="uniForm">
+    <form action="" method="post">{% csrf_token %}
 
 
 	<fieldset>
-	<fieldset>
-           <div class="subject">
-           <div id="inp1">
-			{{ form.title.errors }}
-   		    <label for="id_subject">Title:</label>
-			{{ form.title }}
-	        </div>
-			</div>
+		<fieldset>
+	           <div class="subject">
+	           <div id="inp1">
+				{{ form.title.errors }}
+	   		    <label for="id_subject">{{ form.title.label }}</label>
+				{{ form.title }}
+		        </div>
+				</div>
 
-			<div class="firstname">
-           <div id="inp1">
-			{{ form.firstname.errors }}
-   		    <label for="id_firstname">First Name:</label>
-			{{ form.firstname }}
-	        </div>
-			</div>
+				<div class="firstname">
+	            <div id="inp1">
+				{{ form.firstname.errors }}
+	   		    <label for="id_firstname">{{ form.firstname.label }}</label>
+				{{ form.firstname }}
+		        </div>
+				</div>
 
-			<div class="lastname">
-		    {{ form.lastname.errors }}
-          <label for="id_lastname">Last Name:</label>
-            {{ form.lastname }}
-	       </div>
+				<div class="lastname">
+			    {{ form.lastname.errors }}
+	            <label for="id_lastname">{{ form.lastname.label }}</label>
+	            {{ form.lastname }}
+		       </div>
 
-		<label for="id_birthdate">Birthdate</label>
-		<div class="birthdate">
+			   {{ form.birthdate.errors }}
+			   <label for="id_birthdate">{{ form.birthdate.label }}</label>
+		    	<div class="birthdate">
+		    	{{ form.birthdate }}
+	          </div>
 
-		{{ form.bdateMonth.errors }}
-         <label for="id_month">Month:</label>
-            {{ form.bdateMonth }}
-            {{ form.bdateDay.errors }}
-			<label for="id_day">Day:</label>
-            {{ form.bdateDay }}
-            {{ form.bdateYear.errors }}
-			<label for="id_year">Year:</label>
-            {{ form.bdateYear }}
-      </div>
+	     		<div class="marital">
+			    {{ form.marital.errors }}
+		        <label for="id_marital">{{ form.marital.label }}</label>
+		        {{ form.marital}}
+		       </div>
 
-     		<div class="marital">
-	 		    {{ form.marital.errors }}
-	           <label for="id_marital">Marital Status:</label>
-	             {{ form.marital}}
-	       </div>
+		    	<div class="occupation">
+			    {{ form.occupation.errors }}
+		         <label for="id_occupation">{{ form.occupation.label }}</label>
+		         {{ form.occupation}}
+		        </div>
 
-		<div class="occupation">
-				    {{ form.occupation.errors }}
-		          <label for="id_occupation">Occupation:</label>
-		            {{ form.occupation}}
-	       </div>
+		       <div class="firm">
+			    {{ form.firm.errors }}
+		           <label for="id_firm">{{ form.firm.label }}</label>
+		              {{ form.firm }}
+		       </div>
 
-	       <div class="firm">
-		   		    {{ form.firm.errors }}
-		             <label for="id_firm">Firm/Business Name & Address:</label>
-		               {{ form.firm }}
-	       </div>
+		       <div class="businessphone">
+			    {{ form.bphone.errors }}
+		           <label for="id_bphonename">{{ form.bphone.label }}</label>
+		              {{ form.bphone }}
 
-	       <div class="businessphone">
-		   		    {{ form.bphone.errors }}
-		             <label for="id_bphonename">Business Phone #:</label>
-		               {{ form.bphone }}
-
-		<div class="homephone">
+		    	<div class="homephone">
 			    {{ form.hphone.errors }}
-	          <label for="id_hphone">Home Phone #:</label>
-	            {{ form.hphone}}
-	       </div>
+		          <label for="id_hphone"> {{ form.hphone.label }}</label>
+		              {{ form.hphone}}
+		       </div>
 
-			<div class="pager">
-		    {{ form.pager.errors }}
-          <label for="id_pager">Pager:</label>
-            {{ form.pager }}
-	       </div>
+				<div class="pager">
+			    {{ form.pager.errors }}
+	           <label for="id_pager">{{ form.pager.label }}</label>
+	            {{ form.pager }}
+		       </div>
 
-	       <div class="email">
-		     {{ form.email.errors }}
-		     <label for="id_email">Email:</label>
-		     {{ form.pager }}
-	       </div>
+		       <div class="email">
+			     {{ form.email.errors }}
+			     <label for="id_email">{{ form.email.label }}</label>
+			     {{ form.email }}
+		       </div>
 
-			<div class="homeaddress">
-		    {{ form.homeA.errors }}
-          <label for="id_homeA">Home Address:</label>
-            {{ form.homeA }}
-	       </div>
+				<div class="homeaddress">
+			    {{ form.homeA.errors }}
+	            <label for="id_homeA">{{ form.homeA.label }}</label>
+	            {{ form.homeA }}
+		       </div>
 
-			<div class="religion">
-		    {{ form.religion.errors }}
-          <label for="id_religion">Religious Background:</label>
-            {{ form.religion }}
-            </div>
-			</fieldset>
-			<fieldset>
-			<legend>Please Check all that Apply</legend>
-			<div class="previousjewish">
-			    {{ form.previousjewish.errors }}
-	            {{ form.previousjewish }}
-            </div>
+				<div class="religion">
+			    {{ form.religion.errors }}
+	           <label for="id_religion">{{ form.religion.label }}</label>
+	            {{ form.religion }}
+	            </div>
+				</fieldset>
 
-		<div class="numofyears">
-	   {{ form.numofyears.errors }}
-		  <label for="id_religion"># of Years:</label>
-	   {{ form.numofyears }}
-            </div>
-			</fieldset>
+		        <fieldset>
+				<legend>{{ form.previousjewish.label }}</legend>
+				<div class="previousjewish">
+				    {{ form.previousjewish.errors }}
+		            {{ form.previousjewish }}
+
+	            </div>
+
+		    	<div class="numofyears">
+		        {{ form.numofyears.errors }}
+		    	  <label for="id_religion">{{ form.numofyears.label }}</label>
+		        {{ form.numofyears }}
+	             </div>
+				</fieldset>
 
 
-			<fieldset>
-			<legend>Can you</legend>
-			<div class="previousexp">
-			    {{ form.previousexp.errors }}
-	            {{ form.previousexp }}
+				<fieldset>
+				<legend>{{ form.previousexp.label }}</legend>
+				<div class="previousexp">
+				    {{ form.previousexp.errors }}
+		            {{ form.previousexp }}
 
-            </div>
+	            </div>
 
-			</fieldset>
+				</fieldset>
 
-			<fieldset><legend>Do you have any interest in any of the following</legend><table><tr>
-			<td> {{ form.activity }}</td>
-			<td>{{ form.activity2 }}</td>
-			</tr></table></fieldset>
+				<fieldset><legend>{{ form.activity.label }}</legend><table><tr>
+				<td> {{ form.activity }}</td>
+				<td>{{ form.activity2 }}</td>
+				</tr></table></fieldset>
 
-			<div class="ctrlHolder">
+				<div class="ctrlHolder">
 
-			<fieldset><legend>Yahrezeits:</legend>
-	        <table>
-			<tr>
-  				<th>Name of Deceased Relative</th>
-   				<th>Relationship</th>
-  				<th>Date of Death</th>
-   				</tr>
-   				<tr>
-   				<td>{{ form.nameofdeceased1.errors }}
- 		            {{ form.nameofdeceased1 }}</td>
-	   				<td>{{ form.relationship1.errors }}
-   		            {{ form.relationship1 }}</td>
-	   		        <td>{{ form.dateofdeath1.errors }}
-   		            {{ form.dateofdeath1 }}</td>
+				<fieldset><legend>Yahrezeits:</legend>
+		        <table>
+				<tr>
+	  				<th>{{ form.nameofdeceased1.label}}</th>
+	   				<th>{{ form.relationship1.label }}</th>
+	  				<th>{{ form.dateofdeath1.label }}</th>
 	   				</tr>
-					<td>{{ form.nameofdeceased2.errors }}
-   		            {{ form.nameofdeceased2 }}</td>
-	   				<td>{{ form.relationship2.errors }}
-   		            {{ form.relationship2 }}</td>
-	   		        <td>{{ form.dateofdeath2.errors }}
-   		            {{ form.dateofdeath2 }}</td>
+	   				<tr>
+	   				<td>{{ form.nameofdeceased1.errors }}
+	 		            {{ form.nameofdeceased1 }}</td>
+		   				<td>{{ form.relationship1.errors }}
+	   		            {{ form.relationship1 }}</td>
+		   		        <td>{{ form.dateofdeath1.errors }}
+	   		            {{ form.dateofdeath1 }}</td>
+		   				</tr>
+						<td>{{ form.nameofdeceased2.errors }}
+	   		            {{ form.nameofdeceased2 }}</td>
+		   				<td>{{ form.relationship2.errors }}
+	   		            {{ form.relationship2 }}</td>
+		   		        <td>{{ form.dateofdeath2.errors }}
+	   		            {{ form.dateofdeath2 }}</td>
+		   				</tr>
+						<td>{{ form.nameofdeceased3.errors }}
+	   		            {{ form.nameofdeceased3 }}</td>
+		   				<td>{{ form.relationship3.errors }}
+	   		            {{ form.relationship3 }}</td>
+		   		        <td>{{ form.dateofdeath3.errors }}
+	   		            {{ form.dateofdeath3 }}</td>
+		   				</tr>
+				</table>
+				</fieldset>
+
+				<fieldset><legend>Children:</legend>
+		        <table>
+				<tr>
+				<th>{{ form.numofchild.label }}</th>
+				<th>{{ form.numofchild.errors }}{{ form.numofchild }}</th>
+				</tr>
+				<tr>
+	 				<th>{{ form.nameofchild1.label }}</th>
+	   				<th>{{ form.ageofchild1.label }}</th>
+	   				<th>{{ form.genderofchild1.label }}</th>
+	   				<th>{{ form.gradeofchild1.label }}</th>
+	   				<th>{{ form.nameofschool1.label }}</th>
+					<th>Bar/Bat</br>Mitzvah </br>& Year</th>
+	   				<th>Use Photo</br> in TBY </br>Material</th>
 	   				</tr>
-					<td>{{ form.nameofdeceased3.errors }}
-   		            {{ form.nameofdeceased3 }}</td>
-	   				<td>{{ form.relationship3.errors }}
-   		            {{ form.relationship3 }}</td>
-	   		        <td>{{ form.dateofdeath3.errors }}
-   		            {{ form.dateofdeath3 }}</td>
-	   				</tr>
+	   				<tr>
+	   				<td>{{ form.nameofchild1.errors }}
+	 		            {{ form.nameofchild1 }}</td>
+		   				<td>{{ form.ageofchild1.errors }}
+	   		            {{ form.ageofchild1 }}</td>
+		   		        <td>{{ form.genderofchild1.errors }}
+	   		            {{ form.genderofchild1 }}</td>
+	   		            <td>{{ form.gradeofchild1.errors }}
+	   		            {{ form.gradeofchild1 }}</td>
+	   		            <td>{{ form.nameofschool1.errors }}
+	   		            {{ form.nameofschool1 }}</td>
+	   		            <td>{{ form.barmitzvah1.errors }}
+	   		            {{ form.barmitzvah1 }}</td>
+	   		            <td>{{ form.usephoto1.errors }}
+	   		            {{ form.usephoto1 }}</td>
+		   				</tr>
+						<tr>
+						<td>{{ form.nameofchild2.errors }}
+					    {{ form.nameofchild2 }}</td>
+						<td>{{ form.ageofchild2.errors }}
+					     {{ form.ageofchild2 }}</td>
+					     <td>{{ form.genderofchild2.errors }}
+					     {{ form.genderofchild2 }}</td>
+					     <td>{{ form.gradeofchild2.errors }}
+	   		            {{ form.gradeofchild2 }}</td>
+					     <td>{{ form.nameofschool2.errors }}
+					     {{ form.nameofschool2 }}</td>
+					     <td>{{ form.barmitzvah2.errors }}
+					     {{ form.barmitzvah2 }}</td>
+					     <td>{{ form.usephoto2.errors }}
+					     {{ form.usephoto2 }}</td>
+		   				</tr>
+		   				<tr>
+						<td>{{ form.nameofchild3.errors }}
+						{{ form.nameofchild3 }}</td>
+						<td>{{ form.ageofchild3.errors }}
+						{{ form.ageofchild3 }}</td>
+						<td>{{ form.genderofchild3.errors }}
+						{{ form.genderofchild3 }}</td>
+						<td>{{ form.gradeofchild3.errors }}
+	   		            {{ form.gradeofchild3 }}</td>
+						<td>{{ form.nameofschool3.errors }}
+						 {{ form.nameofschool3 }}</td>
+						 <td>{{ form.barmitzvah3.errors }}
+						 {{ form.barmitzvah3 }}</td>
+						 <td>{{ form.usephoto3.errors }}
+						 {{ form.usephoto3 }}</td>
+		   				</tr>
+		   				<tr>
+						<td>{{ form.nameofchild4.errors }}
+						{{ form.nameofchild4 }}</td>
+						<td>{{ form.ageofchild4.errors }}
+						{{ form.ageofchild4 }}</td>
+						<td>{{ form.genderofchild4.errors }}
+						{{ form.genderofchild4 }}</td>
+						<td>{{ form.gradeofchild4.errors }}
+	   		            {{ form.gradeofchild4 }}</td>
+						<td>{{ form.nameofschool4.errors }}
+						 {{ form.nameofschool4 }}</td>
+						 <td>{{ form.barmitzvah4.errors }}
+						 {{ form.barmitzvah4 }}</td>
+						 <td>{{ form.usephoto4.errors }}
+						 {{ form.usephoto4 }}</td>
+		   				</tr>
+		   				<tr>
+						<td>{{ form.nameofchild5.errors }}
+						{{ form.nameofchild5 }}</td>
+						<td>{{ form.ageofchild5.errors }}
+						{{ form.ageofchild5 }}</td>
+						<td>{{ form.genderofchild5.errors }}
+						{{ form.genderofchild5 }}</td>
+						<td>{{ form.gradeofchild5.errors }}
+	   		            {{ form.gradeofchild5 }}</td>
+						<td>{{ form.nameofschool5.errors }}
+						 {{ form.nameofschool5 }}</td>
+						 <td>{{ form.barmitzvah5.errors }}
+						 {{ form.barmitzvah5 }}</td>
+						 <td>{{ form.usephoto5.errors }}
+						 {{ form.usephoto5 }}</td>
+		   				</tr>
+
 			</table>
-			</fieldset>
 
-			<fieldset><legend>Children:</legend>
-	        <table>
-			<tr>
-			<th>Number of Children:</th>
-			<th>{{ form.numofchild.errors }}{{ form.numofchild }}</th>
-			</tr>
-			<tr>
- 				<th>Name</th>
-   				<th>Age</th>
-   				<th>Gender</th>
-   				<th>Grade</th>
-   				<th>Name of School/College</th>
-				<th>Bar/Bat</br>Mitzvah </br>& Year</th>
-   				<th>Use Photo</br> in TBY </br>Material</th>
-   				</tr>
-   				<tr>
-   				<td>{{ form.nameofchild1.errors }}
- 		            {{ form.nameofchild1 }}</td>
-	   				<td>{{ form.ageofchild1.errors }}
-   		            {{ form.ageofchild1 }}</td>
-	   		        <td>{{ form.genderofchild1.errors }}
-   		            {{ form.genderofchild1 }}</td>
-   		            <td>{{ form.gradeofchild1.errors }}
-   		            {{ form.gradeofchild1 }}</td>
-   		            <td>{{ form.nameofschool1.errors }}
-   		            {{ form.nameofschool1 }}</td>
-   		            <td>{{ form.barmitzvah1.errors }}
-   		            {{ form.barmitzvah1 }}</td>
-   		            <td>{{ form.usephoto1.errors }}
-   		            {{ form.usephoto1 }}</td>
-	   				</tr>
-					<tr>
-					<td>{{ form.nameofchild2.errors }}
-				    {{ form.nameofchild2 }}</td>
-					<td>{{ form.ageofchild2.errors }}
-				     {{ form.ageofchild2 }}</td>
-				     <td>{{ form.genderofchild2.errors }}
-				     {{ form.genderofchild2 }}</td>
-				     <td>{{ form.gradeofchild2.errors }}
-   		            {{ form.gradeofchild2 }}</td>
-				     <td>{{ form.nameofschool2.errors }}
-				     {{ form.nameofschool2 }}</td>
-				     <td>{{ form.barmitzvah2.errors }}
-				     {{ form.barmitzvah2 }}</td>
-				     <td>{{ form.usephoto2.errors }}
-				     {{ form.usephoto2 }}</td>
-	   				</tr>
-	   				<tr>
-					<td>{{ form.nameofchild3.errors }}
-					{{ form.nameofchild3 }}</td>
-					<td>{{ form.ageofchild3.errors }}
-					{{ form.ageofchild3 }}</td>
-					<td>{{ form.genderofchild3.errors }}
-					{{ form.genderofchild3 }}</td>
-					<td>{{ form.gradeofchild3.errors }}
-   		            {{ form.gradeofchild3 }}</td>
-					<td>{{ form.nameofschool3.errors }}
-					 {{ form.nameofschool3 }}</td>
-					 <td>{{ form.barmitzvah3.errors }}
-					 {{ form.barmitzvah3 }}</td>
-					 <td>{{ form.usephoto3.errors }}
-					 {{ form.usephoto3 }}</td>
-	   				</tr>
-	   				<tr>
-					<td>{{ form.nameofchild4.errors }}
-					{{ form.nameofchild4 }}</td>
-					<td>{{ form.ageofchild4.errors }}
-					{{ form.ageofchild4 }}</td>
-					<td>{{ form.genderofchild4.errors }}
-					{{ form.genderofchild4 }}</td>
-					<td>{{ form.gradeofchild4.errors }}
-   		            {{ form.gradeofchild4 }}</td>
-					<td>{{ form.nameofschool4.errors }}
-					 {{ form.nameofschool4 }}</td>
-					 <td>{{ form.barmitzvah4.errors }}
-					 {{ form.barmitzvah4 }}</td>
-					 <td>{{ form.usephoto4.errors }}
-					 {{ form.usephoto4 }}</td>
-	   				</tr>
-	   				<tr>
-					<td>{{ form.nameofchild5.errors }}
-					{{ form.nameofchild5 }}</td>
-					<td>{{ form.ageofchild5.errors }}
-					{{ form.ageofchild5 }}</td>
-					<td>{{ form.genderofchild5.errors }}
-					{{ form.genderofchild5 }}</td>
-					<td>{{ form.gradeofchild5.errors }}
-   		            {{ form.gradeofchild5 }}</td>
-					<td>{{ form.nameofschool5.errors }}
-					 {{ form.nameofschool5 }}</td>
-					 <td>{{ form.barmitzvah5.errors }}
-					 {{ form.barmitzvah5 }}</td>
-					 <td>{{ form.usephoto5.errors }}
-					 {{ form.usephoto5 }}</td>
-	   				</tr>
+	</fieldset>
+	<fieldset>
+	<p>{{ form.specialtalent.label }}:</p>
+				<div class="specialtalent">
+			    {{ form.specialtalent.errors }}
 
-		</table>
+	            {{ form.specialtalent }}
+	            </div>
 
-</fieldset>
-<fieldset>
-<p>Special talent or skills:</p>
-			<div class="specialtalent">
-		    {{ form.specialtalent.errors }}
+	<p> {{ form.reasonsforjoin.label }}</p>
+				<div class="reasonsforjoin">
+			    {{ form.reasonsforjoin.errors }}
 
-            {{ form.specialtalent }}
-            </div>
+	            {{ form.reasonsforjoin }}
+	            </div>
+	</fieldset>
 
-<p>Reasons for Joining Temple Bat Yahm:</p>
-			<div class="reasonsforjoin">
-		    {{ form.reasonsforjoin.errors }}
-
-            {{ form.reasonsforjoin }}
-            </div>
-</fieldset>
-
-<p class="submit"><input type="submit" value="Submit"></p>
-</fieldset>
-    </form>
-</body>
-</html>
+	<p class="submit"><input type="submit" value="Submit"></p>
+	</fieldset>
+	    </form>
+	</body>
+	{% endblock%}
+	</html>

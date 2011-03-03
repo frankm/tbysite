@@ -1,5 +1,3 @@
-
-
 from django import forms
 
 class JoinForm(forms.Form):
@@ -13,21 +11,20 @@ class JoinForm(forms.Form):
     title = forms.ChoiceField(TITLE)
     firstname = forms.CharField(label='First Name')
     lastname = forms.CharField(label='Last Name')
-    bdateMonth = forms.CharField(label='Month')
-    bdateDay = forms.CharField(label='Day')
-    bdateYear = forms.CharField(label='Year')
+    birthdate = forms.CharField(label = 'Birthdate (MM/DD/YYYY)')
+    
     MARRY = (
     ('Single', 'Single'),
     ('Married', 'Married'),
     ('Divorced', 'Divorced'),
     ('Widowed', 'Widowed'),
     )
-    marital = forms.ChoiceField(MARRY, label='If Not Married Please Indicate')
+    marital = forms.ChoiceField(MARRY, label='Marital Status')
     occupation = forms.CharField()
     firm = forms.CharField(label='Firm/Business Name & Address')
-    bphone = forms.CharField(label='Business Phone')
-    hphone = forms.CharField(label='Home Phone')
-    pager = forms.CharField(label='Pager #')
+    bphone = forms.CharField(label='Business Phone (XXX-XXX-XXXX)', required = False)
+    hphone = forms.CharField(label='Home Phone (XXX-XXX-XXXX)')
+    pager = forms.CharField(label='Pager #', required = False )
     email = forms.EmailField()
     homeA = forms.CharField(label='Home Address')
     RELIGIOUSB = (
@@ -47,12 +44,12 @@ class JoinForm(forms.Form):
         ('RELIGIOUS_SCHOOL', 'Religious School'),
         )
     previousjewish = forms.CharField(label='Please check all that apply',widget=forms.CheckboxSelectMultiple(choices=ALLTHATAPPLY),required=False)
+    
     numofyears = forms.CharField(label='# of Years',required=False)
     CANYOU = (
         ('READ/SPEAK_HEBREW/YIDDISH', 'Read Hebrew/Speak Hebrew/Speak Yiddish'),
-        ('LEAD_SERVICES', 'Lead Services'),
-        ('HEBREW', 'Hebrew'),
-        ('ENGLISH', 'English'),
+        ('LEAD_SERVICES_IN_HEBREW', 'Lead Services In Hebrew'),
+        ('LEAD_SERVICES_IN_ENGLISH', 'Lead Services In English'),
         ('CHANT_TORAH', 'Chant Torah or Haftarah'),
         ('TEACH_RELIGIOUS_SCHOOL', 'Teach Religious School'),
         ('SING_IN_CHOIR', 'Sing in Choir'),
@@ -138,5 +135,51 @@ class JoinForm(forms.Form):
     
     specialtalent = forms.CharField(label='Special talent or skills',widget=forms.Textarea,required = False)
     reasonsforjoin = forms.CharField(label = 'Reasons for joining Temple Bat Yahm',widget=forms.Textarea, required = False)
-    
 
+    def clean_birthdate(self):
+        birthdate = self.cleaned_data['birthdate']
+        if not len(birthdate) == 10:
+            raise forms.ValidationError('Incorrect format. Please follow MM/DD/YYYY')
+        date = birthdate.split('/')
+        year = date.pop()
+        day = date.pop()
+        month = date.pop()
+        if not year.isdigit() and not len(year) == 4:
+            raise forms.ValidationError('Incorrect format. Please follow MM/DD/YYYY')
+        if not day.isdigit() and not len(day) == 2:
+            raise forms.ValidationError('Incorrect format. Please follow MM/DD/YYYY')
+        if not month.isdigit() and not len(month) == 2:
+            raise forms.ValidationError('Incorrect format. Please follow MM/DD/YYYY')        
+        return birthdate
+
+    def clean_bphone(self):
+        bphone = self.cleaned_data['bphone']
+        if not len(bphone) == 12:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+        bphoneformatted = bphone.split('-')
+        linenumber = bphoneformatted.pop()
+        prefix = bphoneformatted.pop()
+        areacode = bphoneformatted.pop()
+        if not linenumber.isdigit() and not len(linenumber) == 4:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+        if not prefix.isdigit() and not len(prefix) == 3:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+        if not areacode.isdigit() and not len(areacode) == 3:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')        
+        return bphone
+
+    def clean_hphone(self):
+        hphone = self.cleaned_data['hphone']
+        if not len(hphone) == 12:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+        hphoneformatted = hphone.split('-')
+        linenumber = hphoneformatted.pop()
+        prefix = hphoneformatted.pop()
+        areacode = hphoneformatted.pop()
+        if not linenumber.isdigit() and not len(linenumber) == 4:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+        if not prefix.isdigit() and not len(prefix) == 3:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+        if not areacode.isdigit() and not len(areacode) == 3:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')        
+        return hphone
