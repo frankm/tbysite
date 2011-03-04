@@ -107,7 +107,7 @@ INSTALLED_APPS = (
 
     'publisher',
 
-     'django.contrib.admin',
+    'django.contrib.admin',
     'joinform',
     'schedule',
     'upload',
