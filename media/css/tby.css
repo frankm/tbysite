@@ -1,6 +1,7 @@
 @import url('reset.css');
 @import url('960.css');
 @import url('text.css');
+@import url('gallery.css');
 @font-face { font-family: Nilland-Smallcaps; src: url(../fonts/Nilland-SmallCaps.ttf); }
 @font-face { font-family: Nilland-Smallcaps-Bold; src: url(../fonts/Nilland-SmallCaps-Bold.ttf); }
 @font-face { font-family: Nilland-Black; src: url(../fonts/Nilland-Black.ttf); }
@@ -279,11 +280,15 @@ ul.breadcrumb span{
 #col1, #col2, #col3 {
 }
 
+#photo-gallery {
+	border-width: 1; border: solid; text-align: center
+}
 
 #col1:after, #col2:after{
 	content: "\00a0";
 }
 
+#
 /* PLUGIN gogole_map */
 .plugin_googlemap{margin-bottom:20px;}
 .googlemap-map{
