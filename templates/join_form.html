@@ -11,7 +11,7 @@
 @font-face { font-family: Sefer-AH; src: url(/media/fonts/Sefer-AH.TTF); }
 
 body	{
-	background-color:#b0c4de;
+
 }
 body, p {
 	font-family: Nilland-Extra-Bold;
@@ -24,6 +24,43 @@ h1 {
 	margin-left: 2em;
 }
 
+
+
+div.yahrzeits input{
+width: 86%;
+	height = 50px;
+  padding: 5px;
+}
+div.children input{
+
+  width: 86%;
+	height = 50px;
+  padding: 5px;
+
+
+}
+div.children table
+{
+width:100%;
+}
+
+div.children th
+{
+vertical-align:bottom;
+  clear: left;
+
+  width: 30%;
+  padding-top: .25em;
+  margin: 0 0 0 0;
+}
+fieldset
+{
+  padding: 0 20px 20px;
+  margin: 0 0 20px;
+  border: 1px solid #3E4A49;
+  margin-right:15px;
+  margin-left:15px;
+}
 </style>
 
     <h1>Temple Bat Yahm
@@ -38,7 +75,6 @@ Membership Application</h1>
     <form action="" method="post">{% csrf_token %}
 
 
-	<fieldset>
 		<fieldset>
 	           <div class="subject">
 	           <div id="inp1">
@@ -154,7 +190,7 @@ Membership Application</h1>
 				</tr></table></fieldset>
 
 				<div class="ctrlHolder">
-
+				<div class = "yahrzeits">
 				<fieldset><legend>Yahrezeits:</legend>
 		        <table>
 				<tr>
@@ -186,7 +222,8 @@ Membership Application</h1>
 		   				</tr>
 				</table>
 				</fieldset>
-
+				</div>
+<div class = "children">
 				<fieldset><legend>Children:</legend>
 		        <table>
 				<tr>
@@ -197,10 +234,7 @@ Membership Application</h1>
 	 				<th>{{ form.nameofchild1.label }}</th>
 	   				<th>{{ form.ageofchild1.label }}</th>
 	   				<th>{{ form.genderofchild1.label }}</th>
-	   				<th>{{ form.gradeofchild1.label }}</th>
-	   				<th>{{ form.nameofschool1.label }}</th>
-					<th>Bar/Bat</br>Mitzvah </br>& Year</th>
-	   				<th>Use Photo</br> in TBY </br>Material</th>
+
 	   				</tr>
 	   				<tr>
 	   				<td>{{ form.nameofchild1.errors }}
@@ -209,6 +243,57 @@ Membership Application</h1>
 	   		            {{ form.ageofchild1 }}</td>
 		   		        <td>{{ form.genderofchild1.errors }}
 	   		            {{ form.genderofchild1 }}</td>
+
+		   				</tr>
+						<tr>
+						<td>{{ form.nameofchild2.errors }}
+					    {{ form.nameofchild2 }}</td>
+						<td>{{ form.ageofchild2.errors }}
+					     {{ form.ageofchild2 }}</td>
+					     <td>{{ form.genderofchild2.errors }}
+					     {{ form.genderofchild2 }}</td>
+
+		   				</tr>
+		   				<tr>
+						<td>{{ form.nameofchild3.errors }}
+						{{ form.nameofchild3 }}</td>
+						<td>{{ form.ageofchild3.errors }}
+						{{ form.ageofchild3 }}</td>
+						<td>{{ form.genderofchild3.errors }}
+						{{ form.genderofchild3 }}</td>
+
+		   				</tr>
+		   				<tr>
+						<td>{{ form.nameofchild4.errors }}
+						{{ form.nameofchild4 }}</td>
+						<td>{{ form.ageofchild4.errors }}
+						{{ form.ageofchild4 }}</td>
+						<td>{{ form.genderofchild4.errors }}
+						{{ form.genderofchild4 }}</td>
+
+		   				</tr>
+		   				<tr>
+						<td>{{ form.nameofchild5.errors }}
+						{{ form.nameofchild5 }}</td>
+						<td>{{ form.ageofchild5.errors }}
+						{{ form.ageofchild5 }}</td>
+						<td>{{ form.genderofchild5.errors }}
+						{{ form.genderofchild5 }}</td>
+
+		   				</tr>
+
+			</table>
+
+<table>
+
+
+	   				<th>{{ form.gradeofchild1.label }}</th>
+	   				<th>{{ form.nameofschool1.label }}</th>
+					<th>Bar/Bat</br>Mitzvah </br>& Year</th>
+	   				<th>Use Photo</br> in TBY </br>Material</th>
+	   				</tr>
+	   				<tr>
+
 	   		            <td>{{ form.gradeofchild1.errors }}
 	   		            {{ form.gradeofchild1 }}</td>
 	   		            <td>{{ form.nameofschool1.errors }}
@@ -219,12 +304,7 @@ Membership Application</h1>
 	   		            {{ form.usephoto1 }}</td>
 		   				</tr>
 						<tr>
-						<td>{{ form.nameofchild2.errors }}
-					    {{ form.nameofchild2 }}</td>
-						<td>{{ form.ageofchild2.errors }}
-					     {{ form.ageofchild2 }}</td>
-					     <td>{{ form.genderofchild2.errors }}
-					     {{ form.genderofchild2 }}</td>
+
 					     <td>{{ form.gradeofchild2.errors }}
 	   		            {{ form.gradeofchild2 }}</td>
 					     <td>{{ form.nameofschool2.errors }}
@@ -235,12 +315,7 @@ Membership Application</h1>
 					     {{ form.usephoto2 }}</td>
 		   				</tr>
 		   				<tr>
-						<td>{{ form.nameofchild3.errors }}
-						{{ form.nameofchild3 }}</td>
-						<td>{{ form.ageofchild3.errors }}
-						{{ form.ageofchild3 }}</td>
-						<td>{{ form.genderofchild3.errors }}
-						{{ form.genderofchild3 }}</td>
+
 						<td>{{ form.gradeofchild3.errors }}
 	   		            {{ form.gradeofchild3 }}</td>
 						<td>{{ form.nameofschool3.errors }}
@@ -251,12 +326,7 @@ Membership Application</h1>
 						 {{ form.usephoto3 }}</td>
 		   				</tr>
 		   				<tr>
-						<td>{{ form.nameofchild4.errors }}
-						{{ form.nameofchild4 }}</td>
-						<td>{{ form.ageofchild4.errors }}
-						{{ form.ageofchild4 }}</td>
-						<td>{{ form.genderofchild4.errors }}
-						{{ form.genderofchild4 }}</td>
+
 						<td>{{ form.gradeofchild4.errors }}
 	   		            {{ form.gradeofchild4 }}</td>
 						<td>{{ form.nameofschool4.errors }}
@@ -267,12 +337,7 @@ Membership Application</h1>
 						 {{ form.usephoto4 }}</td>
 		   				</tr>
 		   				<tr>
-						<td>{{ form.nameofchild5.errors }}
-						{{ form.nameofchild5 }}</td>
-						<td>{{ form.ageofchild5.errors }}
-						{{ form.ageofchild5 }}</td>
-						<td>{{ form.genderofchild5.errors }}
-						{{ form.genderofchild5 }}</td>
+
 						<td>{{ form.gradeofchild5.errors }}
 	   		            {{ form.gradeofchild5 }}</td>
 						<td>{{ form.nameofschool5.errors }}
@@ -284,8 +349,9 @@ Membership Application</h1>
 		   				</tr>
 
 			</table>
-
+			</div>
 	</fieldset>
+
 	<fieldset>
 	<p>{{ form.specialtalent.label }}:</p>
 				<div class="specialtalent">
@@ -303,7 +369,7 @@ Membership Application</h1>
 	</fieldset>
 
 	<p class="submit"><input type="submit" value="Submit"></p>
-	</fieldset>
+
 	    </form>
 	</body>
 	{% endblock%}

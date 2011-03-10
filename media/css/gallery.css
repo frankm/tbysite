@@ -4,7 +4,14 @@ a:focus{outline:1px dotted}
 a:hover{color:#5B80B2;}
 hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}
 
-
+div.photo-gallery{
+margin: 10px;
+  
+  height: auto;
+  width: auto;
+  float: left;
+  text-align: left;
+}
 
 div.gallery-photo {
  margin: 10px;
@@ -20,4 +27,23 @@ div.gallery-photo img
   margin: 3px;
   border: 1px solid #ffffff;
 }
+div.caption {
+font-size:19px
+}
+
+div.all-gallery {
+text-align: right;
+  font-weight: normal;
+  width: 120px;
+  margin: 2px;
+}
+
+div.title{
+font-family: Nilland-Black;
+  color: #0a2c45;
+font-size:25px;
+text-align: center;
+
+}
+
 p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:20px}
