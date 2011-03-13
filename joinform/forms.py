@@ -140,6 +140,10 @@ class JoinForm(forms.Form):
         birthdate = self.cleaned_data['birthdate']
         if not len(birthdate) == 10:
             raise forms.ValidationError('Incorrect format. Please follow MM/DD/YYYY')
+        if not birthdate.find('/') == 2:
+            raise forms.ValidationError('Incorrect format. Please follow MM/DD/YYYY')
+        if not birthdate.find('/',3) == 5:
+            raise forms.ValidationError('Incorrect format. Please follow MM/DD/YYYY')
         date = birthdate.split('/')
         year = date.pop()
         day = date.pop()
@@ -154,6 +158,8 @@ class JoinForm(forms.Form):
 
     def clean_bphone(self):
         bphone = self.cleaned_data['bphone']
+        if len(bphone) == 0:
+            return bphone
         if not len(bphone) == 12:
             raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
         bphoneformatted = bphone.split('-')
@@ -183,3 +189,157 @@ class JoinForm(forms.Form):
         if not areacode.isdigit() and not len(areacode) == 3:
             raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')        
         return hphone
+        
+class ChavurahForm(forms.Form):
+    TITLE = (
+    ('MR', 'Mr.'),
+    ('MS', 'Ms.'),
+    ('MRS', 'Mrs.'),
+    ('MI', 'Miss'),
+    ('DR', 'Dr.'),
+    )
+    title = forms.ChoiceField(TITLE)
+    firstname = forms.CharField(label='First Name')
+    lastname = forms.CharField(label='Last Name')
+    birthdate = forms.CharField(label = 'Birthdate (MM/DD/YYYY)')
+    
+    occupation = forms.CharField()
+    
+    bphone = forms.CharField(label='Business Phone (XXX-XXX-XXXX)', required = False)
+    hphone = forms.CharField(label='Home Phone (XXX-XXX-XXXX)')
+    cphone = forms.CharField(label='Cell Phone (XXX-XXX-XXXX)')
+  
+    email = forms.EmailField()
+    homeA = forms.CharField(label='Home Address')
+    
+    numofchild = forms.CharField(label = 'Number of Children:')
+    nameofchild1 = forms.CharField(label = 'Name:',required = False)
+    ageofchild1 = forms.CharField(label = 'Age',required = False)
+    genderofchild1 = forms.CharField(label = 'Gender',required = False)
+    gradeofchild1 = forms.CharField(label = 'Grade',required = False)
+    nameofschool1 = forms.CharField(label = 'Name of School/College', required = False)
+    barmitzvah1 = forms.CharField(label = 'Bar/Bat Mitzvah & Year', required = False)
+    
+
+    nameofchild2 = forms.CharField(label = 'Name:',required = False)
+    ageofchild2 = forms.CharField(label = 'Age',required = False)
+    genderofchild2 = forms.CharField(label = 'Gender',required = False)
+    gradeofchild2 = forms.CharField(label = 'Grade',required = False)
+    nameofschool2 = forms.CharField(label = 'Name of School/College', required = False)
+    barmitzvah2 = forms.CharField(label = 'Bar/Bat Mitzvah & Year', required = False)
+    
+
+    nameofchild3 = forms.CharField(label = 'Name:',required = False)
+    ageofchild3 = forms.CharField(label = 'Age',required = False)
+    genderofchild3 = forms.CharField(label = 'Gender',required = False)
+    gradeofchild3 = forms.CharField(label = 'Grade',required = False)
+    nameofschool3 = forms.CharField(label = 'Name of School/College', required = False)
+    barmitzvah3 = forms.CharField(label = 'Bar/Bat Mitzvah & Year', required = False)
+
+    nameofchild4 = forms.CharField(label = 'Name:',required = False)
+    ageofchild4 = forms.CharField(label = 'Age',required = False)
+    genderofchild4 = forms.CharField(label = 'Gender',required = False)
+    gradeofchild4 = forms.CharField(label = 'Grade',required = False)
+    nameofschool4 = forms.CharField(label = 'Name of School/College', required = False)
+    barmitzvah4 = forms.CharField(label = 'Bar/Bat Mitzvah & Year', required = False)
+
+    CRITERIAS = (
+        ('LITTLE', 'Little'),
+        ('SOMEWHAT', 'Somewhat'),
+        ('VERY', 'Very'),
+      
+    )
+    couples = forms.ChoiceField(CRITERIAS, label = 'Chavurah with couples only')
+    singles = forms.ChoiceField(CRITERIAS, label = 'Chavurah with singles only')
+    childrenactivities = forms.ChoiceField(CRITERIAS, label = 'Chavurah in which most activities include children')
+    similarage = forms.ChoiceField(CRITERIAS, label = 'Chavurah with children similar in age to my children')
+    mixedages = forms.ChoiceField(CRITERIAS, label = 'Chavurah with children of mixed age')
+    celebrates = forms.ChoiceField(CRITERIAS, label = 'Celebrates Jewish Holidays')
+    socialactivities = forms.ChoiceField(CRITERIAS, label = 'Includes Social Activities')
+    discussions = forms.ChoiceField(CRITERIAS, label = 'Discussions/Speakers')
+    sports = forms.ChoiceField(CRITERIAS, label = ' Sports/Sporting Events')
+    othermembers = forms.CharField(label='Please list any other members you might enjoy forming a Chavurah with',widget=forms.Textarea,required = False)
+    
+    currentchavurah = forms.CharField(label = 'If currently in a Chavurah, please state name of Chavurah and list members: ',widget=forms.Textarea, required = False)
+   
+    def clean_birthdate(self):
+        birthdate = self.cleaned_data['birthdate']
+        if not len(birthdate) == 10:
+            raise forms.ValidationError('Incorrect format. Please follow MM/DD/YYYY')
+        if not birthdate.find('/') == 2:
+            raise forms.ValidationError('Incorrect format. Please follow MM/DD/YYYY')
+        if not birthdate.find('/',3) == 5:
+            raise forms.ValidationError('Incorrect format. Please follow MM/DD/YYYY')
+        date = birthdate.split('/')
+        year = date.pop()
+        day = date.pop()
+        month = date.pop()
+        if not year.isdigit() and not len(year) == 4:
+            raise forms.ValidationError('Incorrect format. Please follow MM/DD/YYYY')
+        if not day.isdigit() and not len(day) == 2:
+            raise forms.ValidationError('Incorrect format. Please follow MM/DD/YYYY')
+        if not month.isdigit() and not len(month) == 2:
+            raise forms.ValidationError('Incorrect format. Please follow MM/DD/YYYY')        
+        return birthdate
+
+    def clean_bphone(self):
+        bphone = self.cleaned_data['bphone']
+        if len(bphone) == 0:
+            return bphone
+        if not len(bphone) == 12:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX1')
+        if not bphone.find('-') == 3:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX2')
+        if not bphone.find('-',4) == 7:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX3')            
+        bphoneformatted = bphone.split('-')
+        linenumber = bphoneformatted.pop()
+        prefix = bphoneformatted.pop()
+        areacode = bphoneformatted.pop()
+        if not linenumber.isdigit() and not len(linenumber) == 4:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX4')
+        if not prefix.isdigit() and not len(prefix) == 3:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX5')
+        if not areacode.isdigit() and not len(areacode) == 3:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX6')        
+        return bphone
+
+    def clean_hphone(self):
+        hphone = self.cleaned_data['hphone']
+        if not len(hphone) == 12:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+        if not hphone.find('-') == 3:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+        if not hphone.find('-',4) == 7:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')    
+        hphoneformatted = hphone.split('-')
+        linenumber = hphoneformatted.pop()
+        prefix = hphoneformatted.pop()
+        areacode = hphoneformatted.pop()
+        if not linenumber.isdigit() and not len(linenumber) == 4:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+        if not prefix.isdigit() and not len(prefix) == 3:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+        if not areacode.isdigit() and not len(areacode) == 3:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')        
+        return hphone
+   
+    def clean_cphone(self):
+        cphone = self.cleaned_data['cphone']
+        if not len(cphone) == 12:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+        if not cphone.find('-') == 3:
+	    raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+	if not cphone.find('-',4) == 7:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+        cphoneformatted = cphone.split('-')
+        linenumber = cphoneformatted.pop()
+        prefix = cphoneformatted.pop()
+        areacode = cphoneformatted.pop()
+        if not linenumber.isdigit() and not len(linenumber) == 4:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+        if not prefix.isdigit() and not len(prefix) == 3:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')
+        if not areacode.isdigit() and not len(areacode) == 3:
+            raise forms.ValidationError('Incorrect format. Please follow XXX-XXX-XXXX')        
+        return cphone   

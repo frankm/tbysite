@@ -11,8 +11,8 @@ admin.autodiscover()
 urlpatterns = patterns('joinform.views',
     (r'^admin/', include(admin.site.urls)),
     
-    (r'^$', 'join'),
-    (r'^chavurah/$', 'chavurah'),
+    
+    (r'^$', 'chavurah'),
 
     #url(r'^calendar_app$', direct_to_template,{"template":"homepage_schedule.html"}),
 

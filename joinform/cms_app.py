@@ -7,3 +7,9 @@ class JoinApphook(CMSApp):
     urls = ["joinform.urls"]
 
 apphook_pool.register(JoinApphook)
+
+class ChavurahApphook(CMSApp):
+    name = _("Chavurah Form")
+    urls = ["joinform.chavurah_urls"]
+
+apphook_pool.register(ChavurahApphook)
