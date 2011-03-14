@@ -14,7 +14,7 @@
     </div>
 </div>
 {% if object.public_galleries %}
-<h2>Other Photos From The Same Gallery:</h2>
+<h2>Other Photos From The Similar Galleries:</h2>
 <ol>
 {% for gallery in object.public_galleries %}
     <li>{%previous_in_gallery object gallery%}  {%next_in_gallery object gallery%}</li>

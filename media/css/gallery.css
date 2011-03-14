@@ -4,8 +4,21 @@ a:focus{outline:1px dotted}
 a:hover{color:#5B80B2;}
 hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}
 
+h1.title {
+  margin: 10px;
+  text-align: center;
+}
+
+h2.published {
+ margin: 11px;
+  text-align: center;
+}
+p.gallery-desc {
+margin: 11px;
+  text-align: center;
+}
 div.photo-gallery{
-margin: 10px;
+margin: 15px;
   
   height: auto;
   width: auto;
@@ -14,7 +27,7 @@ margin: 10px;
 }
 
 div.gallery-photo {
- margin: 10px;
+ margin: 5px;
   border: 1px solid #000000;
   height: auto;
   width: auto;

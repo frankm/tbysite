@@ -1,5 +1,8 @@
 {% extends "photologue/root.html" %}
+<style type="text/css">
 
+
+</style>
 <html>
 
 <head>
@@ -12,8 +15,8 @@
 {% block col_left %}
 
 <h1 class= "title">{{ object.title }}</h1>
-<h2>Originally published {{ object.date_added|date:"l, F jS, Y" }}</h2>
-{% if object.description %}<p>{{ object.description }}</p>{% endif %}
+<h2 class= "published">Originally published {{ object.date_added|date:"l, F jS, Y" }}</h2>
+{% if object.description %}<p class = "gallery-desc">{{ object.description }}</p>{% endif %}
 <div class="photo-gallery">
     {% for photo in object.public %}
 

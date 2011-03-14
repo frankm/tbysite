@@ -4,7 +4,7 @@ a:focus{outline:1px dotted}
 a:hover{color:#5B80B2;}
 hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}
 
-h1{font-size:25px}
+h1{font-size:25px; margin: 10px; }
 h2{font-size:23px}
 h3{font-size:21px}
 h4{font-size:19px}
