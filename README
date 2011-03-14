@@ -1,6 +1,5 @@
 README
 
-More instructions to follow.
 This assumes you are working on a unix-based system.
 
 install python2.7
@@ -37,7 +36,7 @@ Runserver
 		Validating models...
 		0 errors found
 
-		Django version 1.2.4, using settings 'example.settings'
+		Django version 1.2.4, using settings 'tbysite.settings'
 		Development server is running at http://127.0.0.1:8000/
 		Quit the server with CONTROL-C.
 
