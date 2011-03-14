@@ -1,15 +1,17 @@
-from upload.models import Cantor
+from upload.models import CantorSet, Cantor
 from django.contrib import admin
 
+class CantorInline(admin.TabularInline):
+	model = Cantor
+	extra = 3
 
-class CantorAdmin(admin.ModelAdmin):
+class CantorSetAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Files',               {'fields': ['document', 'audio']}),
-        ('Comments or Instructions', {'fields': ['notes'], 'classes': ['collapse']}),
+        ('Cantor Set',               {'fields': ['name']}),
     ]
-    list_display = ('document_name', 'audio_name', 'notes')
-    list_filter = ['document']
-    search_fields = ['audio', 'document', 'notes']
+    inlines = [CantorInline]
+    list_display = ('name',)
 
 
-admin.site.register(Cantor, CantorAdmin)
+
+admin.site.register(CantorSet, CantorSetAdmin)

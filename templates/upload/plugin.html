@@ -1,0 +1,15 @@
+	<table border="1" style="background-color:white" >
+	  <tr>
+		<th  width="100" align="left">Document File</th>
+		<th  width="100" align="left">Audio File</th>
+		<th  width="250" align="left">Notes</th>
+	  </tr>   
+  {% for set in instance.cantorset.cantor_set.all %}
+		<tr>
+			<td><a href="/media/cantor/{{set.document_name}}">{{set.document_name}}</a></td>
+			<td><a href="/media/cantor/{{set.audio_name}}">{{set.audio_name}}</a></td>
+			<td>{{set.notes}}</td>
+		</tr>
+    {% endfor %}
+    
+	</table>

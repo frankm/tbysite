@@ -111,6 +111,7 @@ INSTALLED_APPS = (
     'joinform',
     'schedule',
     'upload',
+    'imagecycle',
     'photologue',
     
 )
