@@ -24,6 +24,7 @@ h3 {
 p {
   padding: 0;
   margin: 0;
+  padding-bottom: 10px;
 }
 
 body{
@@ -236,6 +237,7 @@ ul.breadcrumb span{
 
 #central_content {
   background-color: #D7D4CE;
+  margin-top: 8px;
 }
 
 .inner_div{
@@ -248,7 +250,6 @@ ul.breadcrumb span{
 
 #featured {
   background-color: #D7D4CE;
-  margin-bottom: 20px;
 }
 
 #col1 {
@@ -270,8 +271,9 @@ ul.breadcrumb span{
 }
 
 #col3 {
-  background-color: #38648F;
+  /*background-color: #38648F;*/
   color: #232F3B;
+  margin-left: 0;
 }
 
 #col2, #col3 {
