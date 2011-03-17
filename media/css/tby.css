@@ -209,7 +209,7 @@ body{
   padding: 7px;
 }
 
-#col1 h1, #col1 h2, #col1 h3, #col1 h4, #col2 h3, #col2 h4, #col3 h3, #col3 h4 {
+#col1 h1, #col1 h2, #col1 h3, #col1 h4, #col2 h3, #col2 h4, #col3 h3, #col3 h4, #col2_5 h3, #col2_5 h4 {
   color: #A78D36;
 }
 
@@ -226,12 +226,10 @@ body{
 }
 
 #col1 {
-  background-color: #D7D4CE;
   min-height: 50px;
 }
 
 #col2 {
-  background-color: #D7D4CE;
 }
 
 #col3 {

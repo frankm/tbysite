@@ -122,6 +122,8 @@ LANGUAGES = [
 CMS_TEMPLATES = (
     ('tby_home.html', gettext('tby base layout')),
     ('gallery_archive.html', gettext('gallery form')),
+    ('tby_split.html', gettext('tby split content layout')),
+    ('tby_three.html', gettext('tby three content layout')),
 )
 
 CMS_REDIRECTS = True

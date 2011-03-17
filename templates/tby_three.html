@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load i18n cms_tags %}
+	<link href="{{ MEDIA_URL }}css/tby.css" media="all" rel="stylesheet" type="text/css" />
+
+{% block content %}
+  <div id="col1" class="grid_4">	    
+		{% include "sidebar_submenu.html" %}	
+		{% block col_sidebar %}
+			<div class="inner_div">
+	      {% placeholder col_sidebar %}
+			</div>
+		{% endblock %}
+    <div id="col1_end"></div>
+  </div>
+
+  <div id="central_content" class="grid_12">
+      <div id="featured" class="grid_12 alpha">
+		    <div class="inner_div">
+        {% block top_featured %}
+          {% placeholder top_featured %}
+        {% endblock %}
+		    </div>
+      </div>
+
+      <div id="col2" class="grid_4">
+	      {% block col_left %}
+			    <div class="inner_div">
+		        {% placeholder col_left %}
+			    </div>
+        {% endblock %}
+      </div>
+
+      <div id="col2_5" class="grid_4">
+	      {% block col_mid %}
+			    <div class="inner_div">
+		        {% placeholder col_mid %}
+			    </div>
+        {% endblock %}
+      </div>
+	
+      <div id="col3" class="grid_4 omega">
+	    {% block col_right %}
+		    <div class="inner_div">
+			    {% placeholder col_right %}
+		    </div>
+	    {% endblock %}
+      </div>
+  </div> <!--end central_content -->
+
+{% endblock %}
+
