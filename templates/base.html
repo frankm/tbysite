@@ -7,9 +7,8 @@
 	<meta name="keywords" content="{% page_attribute meta_keywords %}"/>
 	<link href="{{ MEDIA_URL }}css/tby.css" media="all" rel="stylesheet" type="text/css" />
 	<link href="{{ MEDIA_URL }}css/print.css" media="print"	rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-  <script type="text/javascript"> google.load("jquery", "1.5"); </script>
-  <script type="text/javascript" src="{{MEDIA_URL}}js/actions.js"></script>
+	<script type="text/javascript" src="{{MEDIA_URL}}js/jquery.js"></script>
+	<script type="text/javascript" src="{{MEDIA_URL}}js/actions.js"></script>
 	{% plugins_media %}
 </head>
 <body id="{% block tpl_id %}none{% endblock %}" class="{{ LANGUAGE_CODE }}">

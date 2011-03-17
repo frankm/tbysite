@@ -12,16 +12,10 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^jsi18n/(?P<packages>\S+?)/$', 'django.views.i18n.javascript_catalog'),
     (r'^join-form/$', views.join),
-    (r'^calendars_test/', include('schedule.urls')),
+   # (r'^calendars_test/', include('schedule.urls')),
     (r'^upload/cantor/$', 'upload.views.cantor_documents'),
     (r'^photologue/', include('photologue.urls')),
     #url(r'^calendar_app$', direct_to_template,{"template":"homepage_schedule.html"}),
-
-    #(r'^search/$', views.search),
-    # just for testing - native way to sampleapp urls 
-    # (r'^sampleapp-native/', include('sampleapp.urls')),
-    #url(r'^$', direct_to_template,{"template":"homepage_schedule.html"}),
-    
 )
 
 if settings.DEBUG:

@@ -109,7 +109,6 @@ INSTALLED_APPS = (
 
     'django.contrib.admin',
     'joinform',
-    'schedule',
     'upload',
     'imagecycle',
     'photologue',
